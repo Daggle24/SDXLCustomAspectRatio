@@ -12,6 +12,9 @@ class SDXLAspectRatio:
                     "width": ("INT", {"default": 64, "min": 64, "max": 2048,}),
                     "height": ("INT", {"default": 64, "min": 64, "max": 2048}),
                     "aspectRatio": ([
+                    "square",
+                    "portrait",
+                    "landscape",
                     "1:1  - 1024x1024 square", 
                     "2:3  - 832x1216 portrait", 
                     "3:4  - 896x1152 portrait", 
@@ -33,6 +36,7 @@ class SDXLAspectRatio:
     CATEGORY = "image"
 
     def SDXL_AspectRatio(self, width, height, aspectRatio):
+        print(f'my aspect ratio:', aspectRatio)
         if aspectRatio == "1:1  - 1024x1024 square":
             width, height = 1024, 1024
         elif aspectRatio == "2:3  - 832x1216 portrait":
@@ -59,6 +63,12 @@ class SDXLAspectRatio:
             width, height = 1472, 704
         elif aspectRatio == "21:9 - 1536x640 landscape":
             width, height = 1536, 640
+        elif aspectRatio == "square":
+            width, height = 512, 512
+        elif aspectRatio == "portrait":
+            width, height = 512, 768
+        elif aspectRatio == "landscape":
+            width, height = 768, 512
         return(width, height)
 
             
